@@ -31,15 +31,15 @@
 <body class="gradient-background">
   <div class="flex items-center justify-center h-screen">
     <div class="flex flex-col items-center p-4">
-      <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
-      <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will you be my Valentine?</h2>
+      <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px] md:h-[400px] lg:h-[500px]" style="object-fit: cover;" />
+      <h2 id="valentineQuestion" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold italic text-[#bd1e59] my-4">Will you be my Valentine?</h2>
       <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
         <button id="yesButton"
-          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
+          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[16px] sm:text-[18px] md:text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
           Yes
         </button>
         <button id="noButton"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] w-auto px-4 py-2 bg-red-500 text-white">
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[16px] sm:text-[18px] md:text-[20px] font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] w-auto px-4 py-2 bg-red-500 text-white">
           No
         </button>
       </div>
@@ -93,10 +93,10 @@
         // Cycle images every 7 clicks
         imageDisplay.src = imagePaths[noClickCount % 7]; 
         
-        // Change question text
+        // Change question text based on the current click count
         valentineQuestion.textContent = questionTexts[noClickCount];
 
-        // Increase button size
+        // Increase button size on each click
         buttonHeight += 35;
         buttonWidth += 35;
         fontSize += 25;
@@ -111,7 +111,7 @@
 
     yesButton.addEventListener('click', () => {
       imageDisplay.src = './images/image7.gif';
-      valentineQuestion.textContent = "Yayyy!! Nice choice Masira,hehe, (waise main to gifts bhejne wala tha, lekin tum ghar pr thi, and tbh main mil kr gifts dena prefer krunga, so I guess gifts due whenever we meet, chahe eid ki dawat main hi aana pade)";
+      valentineQuestion.textContent = "Yayyy!! Nice choice Masira, waise main to gifts bhejne wala tha, lekin tum ghar pr thi, and tbh main mil kr gifts dena prefer krunga, so I guess gifts due whenever we meet";
       responseButtons.style.display = 'none';
       confetti();
     });
