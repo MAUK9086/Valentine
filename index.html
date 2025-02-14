@@ -48,16 +48,18 @@
 
   <script type="module">
     import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+
     const yesButton = document.getElementById('yesButton');
     const noButton = document.getElementById('noButton');
     const imageDisplay = document.getElementById('imageDisplay');
     const valentineQuestion = document.getElementById('valentineQuestion');
     const responseButtons = document.getElementById('responseButtons');
-  
+
     let noClickCount = 0;
-    let buttonHeight = 48; // Starting height in pixels
+    let buttonHeight = 48; 
     let buttonWidth = 80;
-    let fontSize = 20; // Starting font size in pixels
+    let fontSize = 20;
+
     const imagePaths = [
       "./images/image1.gif",
       "./images/image2.gif",
@@ -67,44 +69,51 @@
       "./images/image6.gif",
       "./images/image7.gif"
     ];
-  
+
+    const questionTexts = [
+      "Are you sure?",
+      "Are you really sure??",
+      "Are you really really sure???",
+      "Think again?",
+      "Don't believe in second chances?",
+      "Why are you being so cold?",
+      "Maybe we can talk about it?",
+      "I am not going to ask again!",
+      "Ok now this is hurting my feelings!",
+      "You are now just being mean!",
+      "Why are you doing this to me?",
+      "Please give me a chance!",
+      "I am begging you to stop!",
+      "Ok, Let's just start over..",
+      "Final chance!"
+    ];
+
     noButton.addEventListener('click', function() {
-      if (noClickCount < 12) {
-        noClickCount++;
-        imageDisplay.src = imagePaths[noClickCount];
-        buttonHeight += 35; // Increase height by 5px on each click
+      if (noClickCount < 15) {
+        // Cycle images every 7 clicks
+        imageDisplay.src = imagePaths[noClickCount % 7]; 
+        
+        // Change question text
+        valentineQuestion.textContent = questionTexts[noClickCount];
+
+        // Increase button size
+        buttonHeight += 35;
         buttonWidth += 35;
-        fontSize += 25; // Increase font size by 1px on each click
-        yesButton.style.height = `${buttonHeight}px`; // Update button height
+        fontSize += 25;
+
+        yesButton.style.height = `${buttonHeight}px`; 
         yesButton.style.width = `${buttonWidth}px`;
-        yesButton.style.fontSize = `${fontSize}px`; // Update font size
-        if (noClickCount < 12) {
-          noButton.textContent = [
-        "No",
-        "Are you sure?",
-        "Are you really sure??",
-        "Are you really realy sure???",
-        "Think again?",
-        "Don't believe in second chances?",
-        "Why are you being so cold?",
-        "Maybe we can talk about it?",
-        "I am not going to ask again!",
-        "Ok now this is hurting my feelings!",
-        "You are now just being mean!",
-        "Why are you doing this to me?",
-        "Please give me a chance!",
-        "I am begging you to stop!",
-        "Ok, Let's just start over.."
-    ][noClickCount];
-        }
+        yesButton.style.fontSize = `${fontSize}px`;
+
+        noClickCount++;
       }
     });
-  
+
     yesButton.addEventListener('click', () => {
-      imageDisplay.src = './images/image7.gif'; // Change to image7.gif
-      valentineQuestion.textContent = "Yayyy!!Nice choice Masira , waise main to gifts bhejne wala tha, lekin tum ghar pr thi, and tbh main mil kr gifts dena prefer krunga, so i guess gifts due whenever we meet "; // Change the question text
-      responseButtons.style.display = 'none'; // Hide both buttons
-      confetti(); // Trigger confetti animation
+      imageDisplay.src = './images/image7.gif';
+      valentineQuestion.textContent = "Yayyy!! Nice choice Masira, waise main to gifts bhejne wala tha, lekin tum ghar pr thi, and tbh main mil kr gifts dena prefer krunga, so I guess gifts due whenever we meet";
+      responseButtons.style.display = 'none';
+      confetti();
     });
   </script>  
 </body>
